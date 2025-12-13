@@ -1,306 +1,169 @@
-<!doctype html>
-<html>
+<!DOCTYPE html><html lang="id">
 <head>
-<meta charset="utf-8"/>
-<title>FORTOVIO REHAN - Menu Interaktif Neon</title>
-<style>
-body {
-  font-family: monospace;
-  margin: 0;
-  padding: 40px 85px;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portofolio Saya</title>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #ff512f, #dd2476, #1fa2ff, #12d8fa, #a6ffcb);
+      color: #fff;
+    }header {
   text-align: center;
-  background: black;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-height: 100vh;
-  overflow: hidden;
+  padding: 50px 20px;
+  background: linear-gradient(135deg, rgba(0,0,0,0.5), rgba(0,0,0,0.2));
 }
 
-/* Background bintang bergerak */
-.stars {
-  position: fixed;
-  top: 0; left: 0;
-  width: 200%;
-  height: 200%;
-  background: url("https://www.transparenttextures.com/patterns/stardust.png") repeat;
-  animation: moveStars 60s linear infinite;
-  z-index: -1;
-}
-@keyframes moveStars {
-  from { transform: translate(0,0); }
-  to { transform: translate(-500px,500px); }
+header h1 {
+  margin-bottom: 10px;
+  font-size: 2.2em;
 }
 
-/* Foto profil */
-img.profile {
-  width: 160px;
-  height: 160px;
+header p {
+  font-size: 1.1em;
+  opacity: 0.9;
+}
+
+section {
+  padding: 30px 20px;
+  max-width: 900px;
+  margin: auto;
+}
+
+.profile {
+  text-align: center;
+}
+
+.profile img {
+  width: 200px;
+  height: 200px;
   object-fit: cover;
   border-radius: 50%;
-  margin-bottom: 20px;
-  box-shadow: 0 0 20px #0ff, 0 0 40px #ff00ff;
-  animation: pulse 3s infinite alternate;
-}
-@keyframes pulse {
-  from { box-shadow: 0 0 15px #0ff, 0 0 30px #ff00ff; }
-  to   { box-shadow: 0 0 30px #ff00ff, 0 0 60px #0ff; }
+  border: 4px solid #fff;
+  margin-bottom: 15px;
 }
 
-/* Teks ketik */
-.typing {
-  font-size: 22px;
-  font-weight: bold;
-  color: white;
-  white-space: nowrap;
-  overflow: hidden;
-  border-right: .12em solid white;
-  width: 30ch;
-  margin: 0 auto 20px;
-  animation:
-    typing 3s steps(30) 1 forwards,
-    blink 0.7s step-end infinite;
-  text-shadow: 0 0 10px #fff, 0 0 20px #0ff, 0 0 30px #ff00ff;
-}
-@keyframes typing { from { width: 0ch; } to { width: 30ch; } }
-@keyframes blink { 50% { border-color: transparent; } }
-
-/* Tombol menu */
-.btn-row {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  margin-bottom: 40px;
-}
-button {
-  padding: 15px 25px;
-  font-size: 16px;
-  font-weight: bold;
-  border: none;
-  border-radius: 100px;
-  color: white;
-  cursor: pointer;
-  box-shadow: 0 0 15px rgba(0,255,255,0.6);
-  transition: 0.3s ease-in-out, transform 0.2s;
-  background: linear-gradient(90deg, #ff00ff, #00ffff);
-}
-button:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 25px #ff00ff, 0 0 35px #00ffff;
-}
-button:active {
-  transform: scale(0.95);
-  box-shadow: 0 0 15px #00ffff, 0 0 25px #ff00ff;
+.card {
+  background: linear-gradient(135deg, rgba(255,255,255,0.25), rgba(255,255,255,0.05));
+  border-radius: 16px;
+  padding: 22px;
+  margin-bottom: 22px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(6px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Panel kata-kata */
-.panel {
-  display: none;
-  max-width: 700px;
-  background: rgba(0,0,0,0.7);
-  color: #fff;
-  border-radius: 15px;
+.card:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+}
+
+h2 {
+  margin-bottom: 15px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+  padding-bottom: 5px;
+}
+
+ul {
+  padding-left: 20px;
+}
+
+li {
+  margin-bottom: 8px;
+}
+
+footer {
+  text-align: center;
   padding: 20px;
-  margin-bottom: 30px;
-  font-size: 16px;
-  line-height: 1.6;
-  text-align: center;
-  box-shadow: 0 0 10px #0ff, 0 0 20px #ff00ff;
-  position: relative;
-  animation: fadeIn 0.5s ease forwards;
+  background: rgba(0, 0, 0, 0.4);
+  font-size: 0.9em;
 }
 
-/* Neon judul panel */
-.panel strong {
-  font-size: 22px;
-  display: block;
-  margin-bottom: 15px;
-  color: #0ff;
-  text-shadow: 0 0 5px #0ff, 0 0 10px #ff00ff, 0 0 20px #0ff;
-  animation: neonText 1.5s ease-in-out infinite alternate;
-}
-
-/* Neon isi panel */
-.panel p {
-  animation: neonTextSoft 1.5s ease-in-out infinite alternate;
-  color: #fff;
-  text-shadow: 0 0 3px #0ff, 0 0 5px #ff00ff;
-}
-@keyframes neonText {
-  0% { text-shadow: 0 0 5px #0ff, 0 0 10px #ff00ff, 0 0 20px #0ff; }
-  50% { text-shadow: 0 0 10px #0ff, 0 0 20px #ff00ff, 0 0 30px #0ff; }
-  100% { text-shadow: 0 0 5px #0ff, 0 0 10px #ff00ff, 0 0 20px #0ff; }
-}
-@keyframes neonTextSoft {
-  0% { text-shadow: 0 0 3px #0ff, 0 0 5px #ff00ff; }
-  50% { text-shadow: 0 0 5px #0ff, 0 0 10px #ff00ff; }
-  100% { text-shadow: 0 0 3px #0ff, 0 0 5px #ff00ff; }
-}
-
-/* Tombol kembali */
-.back-btn {
-  margin-top: 20px;
-  padding: 10px 20px;
-  border-radius: 50px;
-  border: none;
-  background: linear-gradient(90deg, #00ffff, #ff00ff);
-  color: white;
-  cursor: pointer;
-  box-shadow: 0 0 15px rgba(0,255,255,0.6);
+a {
+  color: #ffe259;
   font-weight: bold;
-  transition: 0.3s;
-  animation: glowBtn 2s ease-in-out infinite alternate;
-}
-.back-btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 25px #ff00ff, 0 0 35px #00ffff, 0 0 45px #0ff;
-}
-
-/* Tombol sosial */
-.social-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  margin: 10px 5px;
-  padding: 10px 20px;
-  border-radius: 50px;
-  border: none;
-  cursor: pointer;
-  font-weight: bold;
-  color: white;
-  background: linear-gradient(90deg, #00ffff, #ff00ff);
-  box-shadow: 0 0 10px #0ff, 0 0 20px #ff00ff;
-  transition: 0.3s;
   text-decoration: none;
-  animation: glowBtn 2s ease-in-out infinite alternate;
-}
-.social-btn img { width: 24px; height: 24px; }
-.social-btn:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 25px #ff00ff, 0 0 35px #00ffff, 0 0 45px #0ff;
 }
 
-@keyframes glowBtn {
-  0% { box-shadow: 0 0 10px #0ff, 0 0 20px #ff00ff; }
-  50% { box-shadow: 0 0 20px #0ff, 0 0 40px #ff00ff, 0 0 50px #00ffff; }
-  100% { box-shadow: 0 0 10px #0ff, 0 0 20px #ff00ff; }
+a:hover {
+  text-decoration: underline;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px);}
-  to { opacity: 1; transform: translateY(0);}
+/* Glow & text animation */
+h1, h2 {
+  background: linear-gradient(90deg, #ffe259, #ffa751, #12d8fa, #a6ffcb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: glowText 4s infinite alternate;
 }
 
-/* Deskripsi bawah */
-.description {
-  max-width: 700px;
-  margin: 0 auto 50px;
-  padding: 20px 30px;
-  background: rgba(0, 0, 0, 0.6);
-  border-radius: 20px;
-  color: #fff;
-  text-align: center;
-  box-shadow: 0 0 20px #0ff, 0 0 40px #ff00ff;
-  backdrop-filter: blur(5px);
+@keyframes glowText {
+  from { filter: drop-shadow(0 0 4px rgba(255,255,255,0.4)); }
+  to { filter: drop-shadow(0 0 12px rgba(255,255,255,0.9)); }
 }
-.description h2 {
-  margin-bottom: 15px;
-  font-size: 24px;
-  text-shadow: 0 0 5px #0ff;
+
+.fade-in {
+  animation: fadeInUp 1.2s ease both;
 }
-.description p {
-  font-size: 16px;
-  line-height: 1.6;
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
-</style>
+
+  </style>
 </head>
-<body>
-
-<div class="stars"></div> <!-- background bintang -->
-
-<img class="profile" src="https://files.catbox.moe/bu5tr0.jpg" alt="Foto Profil">
-
-<div class="typing">WELLCOME TO</div>
-<div class="typing">FORTOVIO REHAN</div>
-
-<div class="btn-row">
-  <button class="COANTACT">COANTACT</button>
-  <button class="PENGALAMAN">PENGALAMAN</button>
-  <button class="KERJAAN">KERJAAN</button>
+<body>  <header class="fade-in">
+    <h1>Halo, Selamat Datang</h1>
+    <p>Ini adalah portofolio pertama saya</p>
+  </header>  <section class="profile fade-in">
+    <img src="https://files.catbox.moe/bu5tr0.jpg" alt="Foto Profil" />
+    <h2>Rehan Pahriansah</h2>
+    <p>Pelajar / Programmer Pemula / Web Developer</p>
+  </section>  <section class="fade-in">
+    <div class="card">
+      <h2>Tentang Saya</h2>
+      <p>
+        Saya adalah seorang pemula di dunia pemrograman yang sedang belajar
+        HTML, CSS, dan JavaScript. Saya tertarik membuat website, bot,
+        dan aplikasi sederhana.
+      </p>
+    </div><div class="card">
+  <h2>Keahlian</h2>
+  <ul>
+    <li>HTML Dasar</li>
+    <li>CSS Dasar</li>
+    <li>JavaScript Dasar</li>
+    <li>Bot WhatsApp / Telegram (Pemula)</li>
+  </ul>
 </div>
 
-<!-- Panel -->
-<div class="panel" id="panelcoantact">
-  <strong>COANTACT</strong>
-  <div>
-    <a class="social-btn" href="https://wa.me/6283132642575" target="_blank">
-      <img src="https://img.icons8.com/fluency/48/ffffff/whatsapp.png"/> WhatsApp
-    </a>
-    <a class="social-btn" href="https://t.me/Hanzoficial" target="_blank">
-      <img src="https://img.icons8.com/fluency/48/ffffff/telegram.png"/> Telegram
-    </a>
-  </div>
-  <button class="back-btn" onclick="goHome()">Kembali</button>
+<div class="card">
+  <h2>Project</h2>
+  <ul>
+    <li>Website Portofolio Sederhana</li>
+    <li>Bot WhatsApp (Baileys)</li>
+    <li>Landing Page Payment</li>
+  </ul>
 </div>
 
-<div class="panel" id="panelPengalaman">
-  <strong>PENGALAMAN</strong>
+<div class="card">
+  <h2>Kontak</h2>
   <p>
-     Membuat bot WhatsApp interaktif dengan menu dan command lengkap.  
-     Bot dapat membalas pesan otomatis, broadcast, dan menyimpan log aktivitas.  
-     Belajar debugging dan optimasi supaya bot stabil tanpa error.  
-     Menambahkan efek neon dan interaktif di tampilan bot.
-  </p>
-  <button class="back-btn" onclick="goHome()">Kembali</button>
-</div>
-
-<div class="panel" id="panelKerjaan">
-  <strong>KERJAAN</strong>
-  <p>💻 Membuat website portofolio pribadi dengan HTML, CSS, dan JavaScript.</p>
-  <p>🛒 Mengembangkan toko online sederhana menggunakan platform gratis.</p>
-  <p>🤖 Membuat bot WhatsApp otomatis dan interaktif.</p>
-  <p>🌐 Mengembangkan project editor interaktif.</p>
-  <p>⚡ Optimasi performa dan tampilan web responsif.</p>
-  <p>🎨 Mendesain tampilan web neon dan animasi interaktif.</p>
-  <button class="back-btn" onclick="goHome()">Kembali</button>
-</div>
-
-<div class="description">
-  <h2>Tentang FORTOVIO</h2>
-  <p>
-    Halo! Saya Rehan Fahriansah, seorang pemula yang sedang belajar coding.
-    Di sini saya berbagi pengalaman belajar, proyek kecil yang sedang
-    saya buat, dan hal-hal menarik seputar dunia pemrograman.
-    Semoga bisa menginspirasi teman-teman yang baru mulai belajar coding juga!
+    WhatsApp: <a href="#">083132642575</a><br /a>
+    Email: <a href="#">HanzOfficial@gmail.com</a>
   </p>
 </div>
 
-<script>
-const panels = {
-  COANTACT: document.getElementById("panelcoantact"),
-  PENGALAMAN: document.getElementById("panelPengalaman"),
-  KERJAAN: document.getElementById("panelKerjaan")
-};
-const btns = document.querySelectorAll(".btn-row button");
-
-function hidePanels() {
-  Object.values(panels).forEach(p => p.style.display = "none");
-}
-
-function goHome() {
-  hidePanels();
-}
-
-btns.forEach(btn => {
-  btn.addEventListener("click", () => {
-    hidePanels();
-    const cls = btn.classList[0];
-    panels[cls].style.display = "block";
-    btns.forEach(b => b.style.boxShadow = "0 0 15px rgba(0,255,255,0.6)");
-    btn.style.boxShadow = "0 0 25px #ff00ff, 0 0 35px #00ffff";
-  });
-});
-</script>
-
-</body>
-  </html>
+  </section>  <footer>
+    <p>© 2025 Portofolio Saya. Dibuat dengan HTML & CSS.</p>
+  </footer></body>
+</html>
