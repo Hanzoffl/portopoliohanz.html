@@ -1,169 +1,219 @@
-<!DOCTYPE html><html lang="id">
+  <!DOCTYPE html>
+<html lang="id">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Portofolio Saya</title>
   <style>
+    /* Reset & Font */
+    html {
+      scroll-behavior: smooth; /* Scroll pelan */
+    }
     body {
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: 'Arial', Helvetica, sans-serif;
       margin: 0;
       padding: 0;
-      background: linear-gradient(135deg, #ff512f, #dd2476, #1fa2ff, #12d8fa, #a6ffcb);
-      color: #fff;
-    }header {
-  text-align: center;
-  padding: 50px 20px;
-  background: linear-gradient(135deg, rgba(0,0,0,0.5), rgba(0,0,0,0.2));
-}
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      color: #f0f0f0;
+    }
 
-header h1 {
-  margin-bottom: 10px;
-  font-size: 2.2em;
-}
+    header {
+      text-align: center;
+      padding: 50px 20px;
+      background: rgba(0,0,0,0.3);
+      backdrop-filter: blur(4px);
+    }
 
-header p {
-  font-size: 1.1em;
-  opacity: 0.9;
-}
+    header h1 {
+      margin-bottom: 10px;
+      font-size: 2.4em;
+      color: transparent;
+      background: linear-gradient(90deg, #ffe259, #ffa751);
+      -webkit-background-clip: text;
+      animation: glowText 3s infinite alternate;
+    }
 
-section {
-  padding: 30px 20px;
-  max-width: 900px;
-  margin: auto;
-}
+    header p {
+      font-size: 1.1em;
+      opacity: 0.85;
+    }
 
-.profile {
-  text-align: center;
-}
+    section {
+      padding: 30px 20px;
+      max-width: 900px;
+      margin: auto;
+    }
 
-.profile img {
-  width: 200px;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 4px solid #fff;
-  margin-bottom: 15px;
-}
+    .profile {
+      text-align: center;
+      margin-bottom: 30px;
+    }
 
-.card {
-  background: linear-gradient(135deg, rgba(255,255,255,0.25), rgba(255,255,255,0.05));
-  border-radius: 16px;
-  padding: 22px;
-  margin-bottom: 22px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
-  backdrop-filter: blur(6px);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+    .profile img {
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid #fff;
+      margin-bottom: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
 
-.card:hover {
-  transform: translateY(-6px) scale(1.01);
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
-}
+    .card {
+      background: rgba(255,255,255,0.05);
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+      backdrop-filter: blur(4px);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      opacity: 0;
+      transform: translateY(20px);
+    }
 
-h2 {
-  margin-bottom: 15px;
-  border-bottom: 2px solid rgba(255, 255, 255, 0.3);
-  padding-bottom: 5px;
-}
+    .card.visible {
+      opacity: 1;
+      transform: translateY(0);
+      transition: all 0.8s ease;
+    }
 
-ul {
-  padding-left: 20px;
-}
+    h2 {
+      margin-bottom: 12px;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+      padding-bottom: 4px;
+      background: linear-gradient(90deg, #12d8fa, #a6ffcb);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: glowText 3s infinite alternate;
+    }
 
-li {
-  margin-bottom: 8px;
-}
+    ul {
+      padding-left: 20px;
+    }
 
-footer {
-  text-align: center;
-  padding: 20px;
-  background: rgba(0, 0, 0, 0.4);
-  font-size: 0.9em;
-}
+    li {
+      margin-bottom: 6px;
+    }
 
-a {
-  color: #ffe259;
-  font-weight: bold;
-  text-decoration: none;
-}
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: rgba(0,0,0,0.3);
+      font-size: 0.9em;
+    }
 
-a:hover {
-  text-decoration: underline;
-}
+    a {
+      color: #ffa751;
+      font-weight: bold;
+      text-decoration: none;
+    }
 
-/* Glow & text animation */
-h1, h2 {
-  background: linear-gradient(90deg, #ffe259, #ffa751, #12d8fa, #a6ffcb);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: glowText 4s infinite alternate;
-}
+    a:hover {
+      text-decoration: underline;
+    }
 
-@keyframes glowText {
-  from { filter: drop-shadow(0 0 4px rgba(255,255,255,0.4)); }
-  to { filter: drop-shadow(0 0 12px rgba(255,255,255,0.9)); }
-}
+    /* Animasi Glow */
+    @keyframes glowText {
+      from { filter: drop-shadow(0 0 3px rgba(255,255,255,0.3)); }
+      to { filter: drop-shadow(0 0 8px rgba(255,255,255,0.7)); }
+    }
 
-.fade-in {
-  animation: fadeInUp 1.2s ease both;
-}
+    /* Typing effect */
+    .typing {
+      border-right: 2px solid #fff;
+      white-space: nowrap;
+      overflow: hidden;
+      display: inline-block;
+      animation: blink 0.7s infinite;
+    }
 
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
+    @keyframes blink {
+      0%, 50%, 100% { border-color: #fff; }
+      25%, 75% { border-color: transparent; }
+    }
   </style>
 </head>
-<body>  <header class="fade-in">
-    <h1>Halo, Selamat Datang</h1>
+<body>
+  <header>
+    <h1 id="typed"></h1>
     <p>Ini adalah portofolio pertama saya</p>
-  </header>  <section class="profile fade-in">
+  </header>
+
+  <section class="profile">
     <img src="https://files.catbox.moe/bu5tr0.jpg" alt="Foto Profil" />
     <h2>Rehan Pahriansah</h2>
     <p>Pelajar / Programmer Pemula / Web Developer</p>
-  </section>  <section class="fade-in">
+  </section>
+
+  <section>
     <div class="card">
       <h2>Tentang Saya</h2>
       <p>
-        Saya adalah seorang pemula di dunia pemrograman yang sedang belajar
+        Saya seorang pemula di dunia pemrograman yang sedang belajar
         HTML, CSS, dan JavaScript. Saya tertarik membuat website, bot,
         dan aplikasi sederhana.
       </p>
-    </div><div class="card">
-  <h2>Keahlian</h2>
-  <ul>
-    <li>HTML Dasar</li>
-    <li>CSS Dasar</li>
-    <li>JavaScript Dasar</li>
-    <li>Bot WhatsApp / Telegram (Pemula)</li>
-  </ul>
-</div>
+    </div>
 
-<div class="card">
-  <h2>Project</h2>
-  <ul>
-    <li>Website Portofolio Sederhana</li>
-    <li>Bot WhatsApp (Baileys)</li>
-    <li>Landing Page Payment</li>
-  </ul>
-</div>
+    <div class="card">
+      <h2>Keahlian</h2>
+      <ul>
+        <li>HTML Dasar</li>
+        <li>CSS Dasar</li>
+        <li>JavaScript Dasar</li>
+        <li>Bot WhatsApp / Telegram (Pemula)</li>
+      </ul>
+    </div>
 
-<div class="card">
-  <h2>Kontak</h2>
-  <p>
-    WhatsApp: <a href="#">083132642575</a><br /a>
-    Email: <a href="#">HanzOfficial@gmail.com</a>
-  </p>
-</div>
+    <div class="card">
+      <h2>Project</h2>
+      <ul>
+        <li>Website Portofolio Sederhana</li>
+        <li>Bot WhatsApp (Baileys)</li>
+        <li>Landing Page Payment</li>
+      </ul>
+    </div>
 
-  </section>  <footer>
+    <div class="card">
+      <h2>Kontak</h2>
+      <p>
+        WhatsApp: <a href="#">083132642575</a><br />
+        Email: <a href="#">HanzOfficial@gmail.com</a>
+      </p>
+    </div>
+  </section>
+
+  <footer>
     <p>© 2025 Portofolio Saya. Dibuat dengan HTML & CSS.</p>
-  </footer></body>
+  </footer>
+
+  <script>
+    // Typing effect
+    const text = "Halo, Selamat Datang";
+    const typedElem = document.getElementById('typed');
+    let index = 0;
+    function type() {
+      if(index < text.length){
+        typedElem.innerHTML += text.charAt(index);
+        index++;
+        setTimeout(type, 120); // kecepatan ketik
+      } else {
+        typedElem.classList.add('typing');
+      }
+    }
+    type();
+
+    // Fade-in cards saat scroll
+    const cards = document.querySelectorAll('.card');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    cards.forEach(card => observer.observe(card));
+  </script>
+</body>
 </html>
